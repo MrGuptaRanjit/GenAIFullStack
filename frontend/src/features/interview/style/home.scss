@@ -1,4 +1,5 @@
 // ── Variables ────────────────────────────────────────────────────────────────
+
 $bg-page:        #0d1117;
 $bg-card:        #161b22;
 $bg-panel:       #1c2230;
@@ -12,9 +13,12 @@ $badge-required: #ff2d78;
 $badge-best:     #ff2d78;
 $info-bg:        #1b2a4a;
 $info-border:    #2d4a7a;
-$font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+$font-stack: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
 
 // ── Page Shell ───────────────────────────────────────────────────────────────
+
 .home-page {
     width: 100%;
     min-height: 100vh;
@@ -26,11 +30,14 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     padding: 3rem 1.5rem;
     gap: 2rem;
 }
 
+
 // ── Page Header ──────────────────────────────────────────────────────────────
+
 .page-header {
     text-align: center;
 
@@ -54,7 +61,9 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     }
 }
 
+
 // ── Main Card ─────────────────────────────────────────────────────────────────
+
 .interview-card {
     width: 100%;
     max-width: 900px;
@@ -72,6 +81,8 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 1rem;
+
         padding: 1rem 1.5rem;
         border-top: 1px solid $border-color;
 
@@ -82,7 +93,9 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     }
 }
 
+
 // ── Panels ────────────────────────────────────────────────────────────────────
+
 .panel-divider {
     width: 1px;
     background-color: $border-color;
@@ -91,9 +104,11 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
 
 .panel {
     flex: 1;
+
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
     padding: 1.5rem;
 
     &__header {
@@ -119,15 +134,22 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     &__textarea {
         flex: 1;
         width: 100%;
+
+        box-sizing: border-box;
+
         background-color: $bg-input;
         border: 1px solid $border-color;
         border-radius: 0.5rem;
+
         padding: 0.75rem 1rem;
+
         color: $text-primary;
         font-family: $font-stack;
         font-size: 0.875rem;
+
         resize: none;
         outline: none;
+
         transition: border-color 0.2s;
         line-height: 1.5;
 
@@ -152,6 +174,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
             position: absolute;
             bottom: 2.25rem;
             right: 2rem;
+
             font-size: 0.75rem;
             color: $text-muted;
         }
@@ -162,12 +185,16 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     }
 }
 
+
 // ── Badges ────────────────────────────────────────────────────────────────────
+
 .badge {
     font-size: 0.7rem;
     font-weight: 600;
+
     padding: 0.15rem 0.5rem;
     border-radius: 0.3rem;
+
     text-transform: uppercase;
     letter-spacing: 0.03em;
 
@@ -184,18 +211,25 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     }
 }
 
+
 // ── Section Label ─────────────────────────────────────────────────────────────
+
 .section-label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
     font-size: 0.875rem;
     font-weight: 500;
+
     color: $text-primary;
+
     margin-bottom: 0.25rem;
 }
 
+
 // ── Dropzone ──────────────────────────────────────────────────────────────────
+
 .upload-section {
     display: flex;
     flex-direction: column;
@@ -207,13 +241,21 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     gap: 0.35rem;
+
     padding: 1.5rem 1rem;
+
     background-color: $bg-input;
+
     border: 2px dashed $border-color;
     border-radius: 0.6rem;
+
     cursor: pointer;
-    transition: border-color 0.2s, background-color 0.2s;
+
+    transition:
+        border-color 0.2s,
+        background-color 0.2s;
 
     &:hover {
         border-color: $accent;
@@ -239,11 +281,141 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     }
 }
 
+
+// ── Resume Success ────────────────────────────────────────────────────────────
+
+.resume-success {
+    display: flex;
+    align-items: center;
+
+    gap: 0.75rem;
+
+    padding: 0.75rem;
+
+    background-color: rgba(#22c55e, 0.08);
+    border: 1px solid rgba(#22c55e, 0.25);
+    border-radius: 0.5rem;
+
+    &__icon {
+        width: 28px;
+        height: 28px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background-color: #22c55e;
+        color: white;
+
+        font-size: 0.85rem;
+        font-weight: 700;
+    }
+
+    &__details {
+        flex: 1;
+        min-width: 0;
+
+        strong {
+            display: block;
+
+            color: $text-primary;
+            font-size: 0.8rem;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        p {
+            margin: 0.2rem 0 0;
+
+            color: #4ade80;
+            font-size: 0.7rem;
+        }
+    }
+}
+
+
+// ── Resume Error ──────────────────────────────────────────────────────────────
+
+.resume-error {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0.65rem 0.75rem;
+
+    background-color: rgba(#ef4444, 0.08);
+    border: 1px solid rgba(#ef4444, 0.25);
+
+    border-radius: 0.5rem;
+
+    span {
+        width: 20px;
+        height: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        border-radius: 50%;
+
+        background-color: #ef4444;
+        color: white;
+
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+
+    p {
+        margin: 0;
+        color: #f87171;
+        font-size: 0.75rem;
+    }
+}
+
+
+// ── Remove Resume Button ──────────────────────────────────────────────────────
+
+.resume-remove {
+    flex-shrink: 0;
+
+    background: transparent;
+    border: none;
+
+    color: $text-muted;
+
+    font-size: 0.7rem;
+    font-family: $font-stack;
+
+    cursor: pointer;
+
+    transition: color 0.2s;
+
+    &:hover {
+        color: #f87171;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+
 // ── OR Divider ────────────────────────────────────────────────────────────────
+
 .or-divider {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+
     color: $text-muted;
     font-size: 0.75rem;
 
@@ -260,33 +432,45 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     }
 }
 
+
 // ── Self Description ──────────────────────────────────────────────────────────
+
 .self-description {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
+
 // ── Info Box ──────────────────────────────────────────────────────────────────
+
 .info-box {
     display: flex;
     align-items: flex-start;
+
     gap: 0.6rem;
+
     padding: 0.75rem 1rem;
+
     background-color: $info-bg;
     border: 1px solid $info-border;
     border-radius: 0.5rem;
 
     &__icon {
         flex-shrink: 0;
+
         color: #4a90e2;
+
         margin-top: 1px;
     }
 
     p {
         margin: 0;
+
         font-size: 0.8rem;
+
         color: #8ab4f8;
+
         line-height: 1.5;
 
         strong {
@@ -295,20 +479,38 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     }
 }
 
+
 // ── Generate Button ───────────────────────────────────────────────────────────
+
 .generate-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
+
     gap: 0.5rem;
+
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, $accent 0%, darken($accent, 10%) 100%);
+
+    background: linear-gradient(
+        135deg,
+        $accent 0%,
+        darken($accent, 10%) 100%
+    );
+
     color: #fff;
+
     font-size: 0.9rem;
     font-weight: 600;
+
     border: none;
     border-radius: 0.5rem;
+
     cursor: pointer;
-    transition: opacity 0.2s, transform 0.1s;
+
+    transition:
+        opacity 0.2s,
+        transform 0.1s;
+
     font-family: $font-stack;
 
     &:hover {
@@ -318,37 +520,117 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     &:active {
         transform: scale(0.98);
     }
+
+    &:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+
+        &:hover {
+            opacity: 0.65;
+        }
+
+        &:active {
+            transform: none;
+        }
+    }
 }
 
-.recent-reports{
+
+// ── Loading Spinner ───────────────────────────────────────────────────────────
+
+.spinner {
+    width: 14px;
+    height: 14px;
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+
+    border-radius: 50%;
+
+    display: inline-block;
+
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+// ── Recent Reports ────────────────────────────────────────────────────────────
+
+.recent-reports {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+
     width: 100%;
     max-width: 900px;
 
-    .reports-list{
+    h2 {
+        margin: 0;
+
+        font-size: 1.2rem;
+        color: $text-primary;
+    }
+
+    .reports-list {
         display: flex;
         gap: 0.75rem;
         flex-wrap: wrap;
 
-        .report-item{
+        padding: 0;
+        margin: 0;
+
+        list-style: none;
+
+        .report-item {
             background-color: $bg-card;
+
             border: 1px solid $border-color;
             border-radius: 0.5rem;
+
             padding: 1rem;
+
             flex: 1;
+            min-width: 220px;
+
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+
             cursor: pointer;
-            flex-shrink: 0;
+
+            transition:
+                border-color 0.2s,
+                transform 0.2s;
+
+            &:hover {
+                border-color: $accent;
+                transform: translateY(-2px);
+            }
+
+            h3 {
+                margin: 0;
+
+                font-size: 0.95rem;
+                color: $text-primary;
+            }
+
+            .report-meta {
+                margin: 0;
+
+                font-size: 0.75rem;
+                color: $text-muted;
+            }
 
             .match-score {
+                margin: 0;
+
                 font-size: 0.8rem;
                 font-weight: 600;
-                color: $accent;
-                align-items: flex-start;
             }
         }
     }
@@ -356,6 +638,7 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
 
 
 // ── Page Footer ───────────────────────────────────────────────────────────────
+
 .page-footer {
     display: flex;
     gap: 1.5rem;
@@ -363,11 +646,123 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
     a {
         font-size: 0.8rem;
         color: $text-muted;
+
         text-decoration: none;
+
         transition: color 0.2s;
 
         &:hover {
             color: $text-primary;
         }
+    }
+}
+
+
+// ── Responsive ────────────────────────────────────────────────────────────────
+
+@media (max-width: 768px) {
+
+    .home-page {
+        padding: 2rem 1rem;
+    }
+
+    .page-header {
+        h1 {
+            font-size: 1.75rem;
+        }
+
+        p {
+            font-size: 0.85rem;
+        }
+    }
+
+    .interview-card {
+
+        &__body {
+            flex-direction: column;
+        }
+
+        &__footer {
+            flex-direction: column;
+            align-items: stretch;
+
+            .footer-info {
+                text-align: center;
+            }
+
+            .generate-btn {
+                width: 100%;
+            }
+        }
+    }
+
+    .panel-divider {
+        width: 100%;
+        height: 1px;
+    }
+
+    .panel {
+        min-height: 400px;
+    }
+
+    .panel--left {
+        .panel__textarea {
+            min-height: 280px;
+        }
+    }
+
+    .resume-success {
+        align-items: flex-start;
+
+        .resume-remove {
+            margin-left: auto;
+        }
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .home-page {
+        padding: 1.5rem 0.75rem;
+        gap: 1.5rem;
+    }
+
+    .page-header {
+
+        h1 {
+            font-size: 1.5rem;
+        }
+    }
+
+    .interview-card {
+        border-radius: 0.75rem;
+    }
+
+    .panel {
+        padding: 1rem;
+    }
+
+    .interview-card__footer {
+        padding: 1rem;
+    }
+
+    .resume-success {
+        flex-wrap: wrap;
+
+        &__details {
+            max-width: calc(100% - 45px);
+        }
+
+        .resume-remove {
+            width: 100%;
+            text-align: right;
+        }
+    }
+
+    .page-footer {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
     }
 }

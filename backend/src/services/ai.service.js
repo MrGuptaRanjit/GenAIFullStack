@@ -32,14 +32,67 @@ const interviewReportSchema = z.object({
     title: z.string().describe("The title of the job for which the interview report is generated"),
 })
 
+// async function generateInterviewReport({ resume, selfDescription, jobDescription }) {
+
+
+//     const prompt = `Generate an interview report for a candidate with the following details:
+//                         Resume: ${resume}
+//                         Self Description: ${selfDescription}
+//                         Job Description: ${jobDescription}
+// `
+
+//     const response = await ai.models.generateContent({
+//         model: "gemini-3-flash-preview",
+//         contents: prompt,
+//         config: {
+//             responseMimeType: "application/json",
+//             responseSchema: zodToJsonSchema(interviewReportSchema),
+//         }
+//     })
+
+//     return JSON.parse(response.text)
+
+
+// }
+
+// async function generateInterviewReport({ resume, selfDescription, jobDescription }) {
+
+//     console.log("1. Starting AI generation...")
+
+//     const prompt = `Generate an interview report for a candidate with the following details:
+//         Resume: ${resume}
+//         Self Description: ${selfDescription}
+//         Job Description: ${jobDescription}
+//     `
+
+//     console.log("2. Sending request to Gemini...")
+
+//     const response = await ai.models.generateContent({
+//         model: "gemini-3-flash-preview",
+//         contents: prompt,
+//         config: {
+//             responseMimeType: "application/json",
+//             responseSchema: zodToJsonSchema(interviewReportSchema),
+//         }
+//     })
+
+//     console.log("3. Gemini response received")
+
+//     return JSON.parse(response.text)
+// }
+
 async function generateInterviewReport({ resume, selfDescription, jobDescription }) {
 
+    console.log("1. Starting AI generation...")
 
     const prompt = `Generate an interview report for a candidate with the following details:
-                        Resume: ${resume}
-                        Self Description: ${selfDescription}
-                        Job Description: ${jobDescription}
-`
+        Resume: ${resume}
+        Self Description: ${selfDescription}
+        Job Description: ${jobDescription}
+    `
+
+    console.log("2. Sending request to Gemini...")
+    console.log("Prompt length:", prompt.length)
 
     const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
@@ -50,11 +103,10 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
         }
     })
 
+    console.log("3. Gemini response received")
+
     return JSON.parse(response.text)
-
-
 }
-
 
 
 async function generatePdfFromHtml(htmlContent) {

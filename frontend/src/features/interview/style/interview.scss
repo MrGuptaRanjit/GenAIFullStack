@@ -14,11 +14,16 @@ $severity-high: #ff4d4d;
 $severity-medium: #f5a623;
 $severity-low: #3fb950;
 
+
+// ── Hide Scrollbar ───────────────────────────────────────────────────────────
+
 *::-webkit-scrollbar {
     display: none;
 }
 
+
 // ── Page Shell ────────────────────────────────────────────────────────────────
+
 .interview-page {
     width: 100%;
     min-height: 100vh;
@@ -31,7 +36,9 @@ $severity-low: #3fb950;
     box-sizing: border-box;
 }
 
+
 // ── 3-Column Layout ───────────────────────────────────────────────────────────
+
 .interview-layout {
     display: flex;
     width: 100%;
@@ -49,7 +56,9 @@ $severity-low: #3fb950;
     flex-shrink: 0;
 }
 
-// ── Left Nav ─────────────────────────────────────────────────────────────────
+
+// ── Left Navigation ───────────────────────────────────────────────────────────
+
 .interview-nav {
     width: 220px;
     flex-shrink: 0;
@@ -58,9 +67,6 @@ $severity-low: #3fb950;
     flex-direction: column;
     justify-content: space-between;
     gap: 0.25rem;
-
-
-
 
     &__label {
         font-size: 0.7rem;
@@ -110,7 +116,9 @@ $severity-low: #3fb950;
     }
 }
 
+
 // ── Center Content ────────────────────────────────────────────────────────────
+
 .interview-content {
     flex: 1;
     padding: 1.75rem 2rem;
@@ -120,17 +128,13 @@ $severity-low: #3fb950;
     padding-bottom: 5rem;
     align-items: flex-start;
 
-
-
-
-
-
-
-
     section {
         min-height: 100%;
     }
 }
+
+
+// ── Content Header ────────────────────────────────────────────────────────────
 
 .content-header {
     display: flex;
@@ -157,7 +161,9 @@ $severity-low: #3fb950;
     }
 }
 
+
 // ── Question Cards ────────────────────────────────────────────────────────────
+
 .q-list {
     display: flex;
     flex-direction: column;
@@ -262,14 +268,16 @@ $severity-low: #3fb950;
     }
 }
 
+
 // ── Road Map ──────────────────────────────────────────────────────────────────
+
 .roadmap-list {
     display: flex;
     flex-direction: column;
     gap: 0;
     position: relative;
 
-    // vertical timeline line
+    // Vertical timeline line
     &::before {
         content: '';
         position: absolute;
@@ -277,7 +285,11 @@ $severity-low: #3fb950;
         top: 0;
         bottom: 0;
         width: 2px;
-        background: linear-gradient(to bottom, $accent, rgba($accent, 0.1));
+        background: linear-gradient(
+            to bottom,
+            $accent,
+            rgba($accent, 0.1)
+        );
         border-radius: 1px;
     }
 }
@@ -289,7 +301,7 @@ $severity-low: #3fb950;
     padding: 0.75rem 0 0.75rem 3.5rem;
     position: relative;
 
-    // dot on timeline
+    // Dot on timeline
     &::before {
         content: '';
         position: absolute;
@@ -300,12 +312,15 @@ $severity-low: #3fb950;
         border-radius: 50%;
         background-color: $bg-card;
         border: 2px solid $accent;
+        box-sizing: border-box;
+        z-index: 2;
     }
 
     &__header {
         display: flex;
         align-items: center;
         gap: 0.6rem;
+        min-width: 0;
     }
 
     &__badge {
@@ -316,6 +331,7 @@ $severity-low: #3fb950;
         border: 1px solid rgba($accent, 0.25);
         padding: 0.1rem 0.5rem;
         border-radius: 2rem;
+        flex-shrink: 0;
     }
 
     &__focus {
@@ -323,6 +339,8 @@ $severity-low: #3fb950;
         font-size: 0.95rem;
         font-weight: 600;
         color: $text-primary;
+        min-width: 0;
+        overflow-wrap: anywhere;
     }
 
     &__tasks {
@@ -340,6 +358,7 @@ $severity-low: #3fb950;
             font-size: 0.845rem;
             color: lighten($text-muted, 12%);
             line-height: 1.5;
+            min-width: 0;
         }
     }
 
@@ -353,7 +372,9 @@ $severity-low: #3fb950;
     }
 }
 
+
 // ── Right Sidebar ─────────────────────────────────────────────────────────────
+
 .interview-sidebar {
     width: 240px;
     flex-shrink: 0;
@@ -368,7 +389,9 @@ $severity-low: #3fb950;
     background-color: $border-color;
 }
 
-// Match Score
+
+// ── Match Score ───────────────────────────────────────────────────────────────
+
 .match-score {
     display: flex;
     flex-direction: column;
@@ -429,7 +452,9 @@ $severity-low: #3fb950;
     }
 }
 
-// Skill Gaps
+
+// ── Skill Gaps ────────────────────────────────────────────────────────────────
+
 .skill-gaps {
     display: flex;
     flex-direction: column;
@@ -475,5 +500,502 @@ $severity-low: #3fb950;
         color: $severity-low;
         background-color: rgba($severity-low, 0.1);
         border-color: rgba($severity-low, 0.25);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE INTERVIEW PAGE
+========================================================= */
+
+
+/* =========================================================
+   LARGE TABLETS / SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .interview-page {
+        padding: 1rem;
+    }
+
+    .interview-layout {
+        grid-template-columns: 210px minmax(0, 1fr) 220px;
+    }
+
+    .interview-content {
+        padding: 1.5rem;
+    }
+
+    .interview-sidebar {
+        padding: 1.5rem 1rem;
+    }
+
+    .interview-nav {
+        padding: 1.5rem 1rem;
+    }
+
+    .interview-nav__item {
+        font-size: 0.85rem;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .interview-page {
+        padding: 0.75rem;
+    }
+
+    .interview-layout {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-height: auto;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+
+    /* -------------------------
+       Navigation
+    ------------------------- */
+
+    .interview-nav {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        box-sizing: border-box;
+    }
+
+    .nav-content {
+        width: 100%;
+    }
+
+    .interview-nav__label {
+        margin-bottom: 0.75rem;
+    }
+
+    .interview-nav__item {
+        width: 100%;
+        min-height: 44px;
+    }
+
+    .interview-divider {
+        display: none;
+    }
+
+
+    /* -------------------------
+       Main Content
+    ------------------------- */
+
+    .interview-content {
+        width: 100%;
+        min-width: 0;
+        padding: 1.25rem;
+        box-sizing: border-box;
+    }
+
+
+    /* -------------------------
+       Right Sidebar
+    ------------------------- */
+
+    .interview-sidebar {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        padding: 1.25rem;
+        box-sizing: border-box;
+    }
+
+    .sidebar-divider {
+        display: none;
+    }
+
+    .match-score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .skill-gaps {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .interview-page {
+        padding: 0;
+        width: 100%;
+    }
+
+    .interview-layout {
+        width: 100%;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    .interview-nav {
+        padding: 1rem;
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    .nav-content {
+        width: 100%;
+    }
+
+    .interview-nav__label {
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.75rem;
+    }
+
+    /*
+       Make navigation horizontally scrollable
+       instead of taking too much vertical space.
+    */
+
+    .interview-nav .nav-content {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .interview-nav .nav-content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .interview-nav .nav-content {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .interview-nav__label {
+        display: none;
+    }
+
+    .interview-nav__item {
+        flex: 0 0 auto;
+        width: auto;
+        min-height: 42px;
+        padding: 0.7rem 0.9rem;
+        font-size: 0.78rem;
+        white-space: nowrap;
+    }
+
+    .interview-nav__icon {
+        display: inline-flex;
+    }
+
+
+    /* =====================================================
+       DOWNLOAD RESUME BUTTON
+    ===================================================== */
+
+    .interview-nav > .button {
+        width: 100%;
+        margin-top: 1rem;
+        min-height: 48px;
+        font-size: 0.9rem;
+    }
+
+
+    /* =====================================================
+       MAIN CONTENT
+    ===================================================== */
+
+    .interview-content {
+        width: 100%;
+        min-width: 0;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    .content-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .content-header h2 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+
+    .content-header__count {
+        font-size: 0.75rem;
+    }
+
+
+    /* =====================================================
+       QUESTION CARDS
+    ===================================================== */
+
+    .q-list {
+        width: 100%;
+    }
+
+    .q-card {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .q-card__header {
+        width: 100%;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 0.6rem;
+        padding: 0.9rem;
+        box-sizing: border-box;
+    }
+
+    .q-card__index {
+        flex-shrink: 0;
+        font-size: 0.7rem;
+    }
+
+    .q-card__question {
+        min-width: 0;
+        margin: 0;
+        font-size: 0.82rem;
+        line-height: 1.45;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .q-card__chevron {
+        flex-shrink: 0;
+    }
+
+    .q-card__body {
+        padding: 1rem;
+    }
+
+    .q-card__section p {
+        font-size: 0.82rem;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* =====================================================
+       RIGHT SIDEBAR
+    ===================================================== */
+
+    .interview-sidebar {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.25rem 1rem;
+        box-sizing: border-box;
+    }
+
+    .match-score {
+        width: 100%;
+    }
+
+    .match-score__ring {
+        width: 110px;
+        height: 110px;
+    }
+
+    .match-score__value {
+        font-size: 1.8rem;
+    }
+
+    .skill-gaps {
+        width: 100%;
+    }
+
+    .skill-gaps__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .skill-tag {
+        max-width: 100%;
+        font-size: 0.75rem;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+    }
+
+
+    /* =====================================================
+       ROADMAP
+    ===================================================== */
+
+    .roadmap-list {
+        width: 100%;
+        position: relative;
+    }
+
+    .roadmap-day {
+        width: 100%;
+
+        /*
+           IMPORTANT:
+           Keep the same left spacing as the desktop version.
+           This prevents the Day badge/title from overlapping
+           the timeline dot.
+        */
+        padding: 1rem 0 1rem 3.5rem;
+
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .roadmap-day::before {
+        /*
+           Keep dot aligned with the timeline.
+        */
+        left: 21px;
+        top: 1.25rem;
+
+        width: 14px;
+        height: 14px;
+
+        z-index: 2;
+    }
+
+    .roadmap-day__header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        min-width: 0;
+    }
+
+    .roadmap-day__badge {
+        flex-shrink: 0;
+    }
+
+    .roadmap-day__focus {
+        font-size: 0.95rem;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .roadmap-day__tasks {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .roadmap-day__tasks li {
+        font-size: 0.82rem;
+        line-height: 1.5;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   iPhone SE / 320px - 375px
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .interview-content {
+        padding: 0.75rem;
+    }
+
+    .interview-nav {
+        padding: 0.75rem;
+    }
+
+    .interview-nav__item {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.72rem;
+    }
+
+    .content-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .q-card__header {
+        padding: 0.75rem;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 0.45rem;
+    }
+
+    .q-card__question {
+        font-size: 0.78rem;
+    }
+
+    .q-card__body {
+        padding: 0.8rem;
+    }
+
+    .q-card__section p {
+        font-size: 0.78rem;
+    }
+
+    .match-score__ring {
+        width: 95px;
+        height: 95px;
+    }
+
+
+    /* =====================================================
+       ROADMAP - VERY SMALL PHONES
+    ===================================================== */
+
+    .roadmap-day {
+        width: 100%;
+        padding: 0.85rem 0 0.85rem 3.5rem;
+        box-sizing: border-box;
+    }
+
+    .roadmap-day::before {
+        left: 21px;
+        top: 1.1rem;
+    }
+
+    .roadmap-day__header {
+        gap: 0.45rem;
+    }
+
+    .roadmap-day__badge {
+        font-size: 0.68rem;
+        padding: 0.1rem 0.45rem;
+    }
+
+    .roadmap-day__focus {
+        font-size: 0.9rem;
+    }
+
+    .roadmap-day__tasks li {
+        font-size: 0.78rem;
+        line-height: 1.5;
     }
 }
