@@ -11,21 +11,53 @@ const Register = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    const [error, setError] = useState("")
+
     const { loading, handleRegister } = useAuth()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        setError("")
+
+        // Extra frontend validation
+        if (!username.trim() || !email.trim() || !password.trim()) {
+            setError("Please fill in all fields.")
+
+            setUsername("")
+            setEmail("")
+            setPassword("")
+
+            return
+        }
+
         try {
+
             await handleRegister({
-                username,
-                email,
+                username: username.trim(),
+                email: email.trim(),
                 password
             })
 
+            // Only navigate if registration actually succeeds
             navigate("/")
+
         } catch (error) {
+
             console.error("Registration failed:", error)
+
+            // Show backend error message if available
+            const message =
+                error?.response?.data?.message ||
+                error?.message ||
+                "Registration failed. Please try again."
+
+            setError(message)
+
+            // Clear form after failed registration
+            setUsername("")
+            setEmail("")
+            setPassword("")
         }
     }
 
@@ -80,16 +112,19 @@ const Register = () => {
                     </div>
 
 
+
                     <h1>
                         Build your edge.
                         <span> Land the role.</span>
                     </h1>
 
 
+
                     <p>
                         Create your account and start preparing for interviews
                         with AI-powered strategies tailored to your target job.
                     </p>
+
 
 
                     <div className="auth-features">
@@ -113,6 +148,7 @@ const Register = () => {
                         </div>
 
 
+
                         <div className="auth-feature">
 
                             <div className="auth-feature__icon">
@@ -130,6 +166,7 @@ const Register = () => {
                             </div>
 
                         </div>
+
 
 
                         <div className="auth-feature">
@@ -155,6 +192,7 @@ const Register = () => {
                 </section>
 
 
+
                 {/* Register Card */}
                 <section className="form-container">
 
@@ -173,6 +211,7 @@ const Register = () => {
                         </p>
 
                     </div>
+
 
 
                     <form onSubmit={handleSubmit}>
@@ -200,6 +239,7 @@ const Register = () => {
                                         strokeLinejoin="round"
                                     >
                                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+
                                         <circle
                                             cx="12"
                                             cy="7"
@@ -211,7 +251,10 @@ const Register = () => {
 
                                 <input
                                     value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    onChange={(e) => {
+                                        setUsername(e.target.value)
+                                        setError("")
+                                    }}
                                     type="text"
                                     id="username"
                                     name="username"
@@ -223,6 +266,7 @@ const Register = () => {
                             </div>
 
                         </div>
+
 
 
                         {/* Email */}
@@ -263,7 +307,10 @@ const Register = () => {
 
                                 <input
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value)
+                                        setError("")
+                                    }}
                                     type="email"
                                     id="email"
                                     name="email"
@@ -275,6 +322,7 @@ const Register = () => {
                             </div>
 
                         </div>
+
 
 
                         {/* Password */}
@@ -315,7 +363,10 @@ const Register = () => {
 
                                 <input
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value)
+                                        setError("")
+                                    }}
                                     type="password"
                                     id="password"
                                     name="password"
@@ -328,6 +379,23 @@ const Register = () => {
                             </div>
 
                         </div>
+
+
+
+                        {/* Error Message */}
+                        {error && (
+                            <div
+                                style={{
+                                    color: "#ff4d4d",
+                                    fontSize: "0.85rem",
+                                    marginBottom: "1rem",
+                                    textAlign: "center"
+                                }}
+                            >
+                                {error}
+                            </div>
+                        )}
+
 
 
                         {/* Register Button */}
@@ -368,10 +436,12 @@ const Register = () => {
                     </form>
 
 
+
                     {/* Login Link */}
                     <div className="form-divider">
                         <span>Already registered?</span>
                     </div>
+
 
 
                     <p className="register-text">
@@ -383,6 +453,7 @@ const Register = () => {
                         </Link>
 
                     </p>
+
 
 
                     {/* Security */}
